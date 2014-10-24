@@ -34,7 +34,9 @@ angular.module('slick', []).directive('slick', [
         swipe: '@',
         touchMove: '@',
         touchThreshold: '@',
-        vertical: '@'
+        vertical: '@',
+        asNavFor: '@',
+        focusOnSelect: '@'
       },
       link: function (scope, element, attrs) {
         var initializeSlick, isInitialized;
@@ -47,6 +49,7 @@ angular.module('slick', []).directive('slick', [
             }
             slider.slick({
               accessibility: scope.accessibility !== 'false',
+              asNavFor: scope.asNavFor,
               arrows: scope.arrows !== 'false',
               autoplay: scope.autoplay === 'true',
               autoplaySpeed: scope.autoplaySpeed != null ? parseInt(scope.autoplaySpeed, 10) : 3000,
@@ -57,6 +60,7 @@ angular.module('slick', []).directive('slick', [
               draggable: scope.draggable !== 'false',
               easing: scope.easing || 'linear',
               fade: scope.fade === 'true',
+              focusOnSelect: scope.focusOnSelect != null ? true : false,
               infinite: scope.infinite !== 'false',
               lazyLoad: scope.lazyLoad || 'ondemand',
               onBeforeChange: scope.onBeforeChange || null,

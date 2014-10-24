@@ -34,6 +34,8 @@ angular.module('slick', [])
       touchMove: "@"
       touchThreshold: "@"
       vertical: "@"
+      asNavFor: "@",
+      focusOnSelect: "@"
     link: (scope, element, attrs) ->
 
       initializeSlick = () ->
@@ -43,6 +45,7 @@ angular.module('slick', [])
 
           slider.slick
             accessibility: scope.accessibility isnt "false"
+            asNavFor: scope.asNavFor
             arrows: scope.arrows isnt "false"
             autoplay: scope.autoplay is "true"
             autoplaySpeed: if scope.autoplaySpeed? then parseInt(scope.autoplaySpeed, 10) else 3000
@@ -53,6 +56,7 @@ angular.module('slick', [])
             draggable: scope.draggable isnt "false"
             easing: scope.easing or "linear"
             fade: scope.fade is "true"
+            focusOnSelect: if scope.focusOnSelect? then true else false
             infinite: scope.infinite isnt "false"
             lazyLoad: scope.lazyLoad or "ondemand"
             onBeforeChange: scope.onBeforeChange or null
